@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
         	'turtle_square = my_turtle_controller.turtle_square:main',
+        	'turtle_circle = my_turtle_controller.turtle_circle:main',
         ],
     },
 )
