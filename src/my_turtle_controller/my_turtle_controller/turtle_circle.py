@@ -27,8 +27,8 @@ class TurtleCircle(Node):
         msg = Twist()
 
         #change the velocit of robot
-        msg.linear.x = 2.0      # change the size of circle, bigger circle bigger number (m/s)
-        msg.angular.z = 1.0     # turning speed, (rad/s)
+        msg.linear.x = 4.0      # change the size of circle, bigger circle bigger number (m/s)
+        msg.angular.z = 2.0     # turning speed, (rad/s)
 
         # time required for a robot to complete a full 360-degree rotation
         duration = 2 * math.pi / abs(msg.angular.z)

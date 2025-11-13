@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
         	'turtle_square = my_turtle_controller.turtle_square:main',
         	'turtle_circle = my_turtle_controller.turtle_circle:main',
+        	'turtle_circle_param = my_turtle_controller.turtle_circle_param:main',
         ],
     },
 )
