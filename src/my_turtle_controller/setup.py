@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='seaian',
     maintainer_email='seaian@todo.todo',
-    description='TODO: Package description',
+    description='Turtlesim for ROS2 study',
     license='TODO: License declaration',
     extras_require={
         'test': [
@@ -27,6 +27,8 @@ setup(
         	'turtle_square = my_turtle_controller.turtle_square:main',
         	'turtle_circle = my_turtle_controller.turtle_circle:main',
         	'turtle_circle_param = my_turtle_controller.turtle_circle_param:main',
+        	'turtle_circle_timer = my_turtle_controller.turtle_circle_timer:main',
+        	
         ],
     },
 )

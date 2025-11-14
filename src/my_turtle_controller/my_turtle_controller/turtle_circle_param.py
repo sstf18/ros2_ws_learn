@@ -32,14 +32,12 @@ class TurtleCircleParam(Node):
         
         # Sets the message's forward speed using the value read from the parameter
         self.cmd.linear.x = self.linear_speed
-        
-        
+               
         self.cmd.angular.z = self.angular_speed
 
         # Records the exact time the node started running
         self.start_time = time.time()
 
-        # 
         self.timer = self.create_timer(0.05, self.timer_callback)
 
     def timer_callback(self):
