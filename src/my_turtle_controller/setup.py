@@ -29,6 +29,8 @@ setup(
         	'turtle_circle_param = my_turtle_controller.turtle_circle_param:main',
         	'turtle_circle_timer = my_turtle_controller.turtle_circle_timer:main',
         	'turtle_keyboard_teleop = my_turtle_controller.turtle_keyboard_teleop:main',
+        	'turtle_pose_sub = my_turtle_controller.turtle_pose_sub:main',
+        	'turtle_distance_monitor = my_turtle_controller.turtle_distance_monitor:main',
         	
         ],
     },

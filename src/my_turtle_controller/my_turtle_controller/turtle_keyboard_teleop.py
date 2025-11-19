@@ -5,10 +5,10 @@ from rclpy.duration import Duration
 
 import math
 import threading # handle keyboard input concurrently with the main ROS event loop (rclpy.spin())
-import sys
+import sys # access to system specific parameters and functions, used here for standard input. 
 import time
 import termios # modify terminal settings so that individual keystrokes are raed immediately
-import tty
+import tty # provides a function to switch the terminal mode. 
 
 class TurtleKeyboardTeleop(Node):
 	def __init__(self):
@@ -42,7 +42,8 @@ class TurtleKeyboardTeleop(Node):
 		
 		self.get_logger().info("Starting keyboard teleop. "
 					"Use WASD to move, SPACE to stop, Q to quit.")
-		# keyboard thread		
+					
+		# keyboard thread: start a separate thread, to continuously listen for keyboard input without blocking the main ROS event loop (rclpy.spin())		
 		self.keyboard_thread = threading.Thread(
 			target = self.keyboard_loop, 
 			daemon = True
@@ -117,8 +118,8 @@ class TurtleKeyboardTeleop(Node):
 	
 
 def main(args = None):
-	rclpy.init(args = args)
-	node = TurtleKeyboardTeleop()
+	rclpy.init(args = args) # initizalizes the ROS2 client library
+	node = TurtleKeyboardTeleop() # create an instance of our node class
 	try: 
 		rclpy.spin(node)
 	except KeyboardInterrupt: 
