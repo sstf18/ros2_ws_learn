@@ -31,6 +31,7 @@ setup(
         	'turtle_keyboard_teleop = my_turtle_controller.turtle_keyboard_teleop:main',
         	'turtle_pose_sub = my_turtle_controller.turtle_pose_sub:main',
         	'turtle_distance_monitor = my_turtle_controller.turtle_distance_monitor:main',
+        	'turtle_zone_monitor = my_turtle_controller.turtle_zone_monitor:main',
         	
         ],
     },
