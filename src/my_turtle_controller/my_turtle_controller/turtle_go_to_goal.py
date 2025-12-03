@@ -35,9 +35,25 @@ class TurtleGoToGoal(Node):
         self.dist_tol = self.get_parameter(
             'distance_tolerance').get_parameter_value().double_value
 
+        self.waypoints = [
+            (2.0, 2.0),
+            (8.0, 2.0),
+            (8.0, 8.0),
+            (2.0, 8.0)
+        ]
+        
+        self.current_wp_index = 0 
+        self.goal_x, self.goal_y = self.waypoints[self.current_wp_index]
+        
         self.get_logger().info(
-            f"Go-to-goal started. "
-            f"Goal = ({self.goal_x:.2f}, {self.goal_y:.2f}), "
+            f"Starting waypoint patrol. First goal: "
+            f"({self.goal_x}, {self.goal_y})"
+        )
+
+
+        self.get_logger().info(
+            f"Waypoint follower started. "
+            f"First Goal = ({self.goal_x:.2f}, {self.goal_y:.2f}), "
             f"k_lin={self.k_lin}, k_ang={self.k_ang}, "
             f"dist_tol={self.dist_tol}"
         )
@@ -46,14 +62,18 @@ class TurtleGoToGoal(Node):
         self.current_pose = None
 
         # publish /turtle1/cmd_vel
-        self.cmd_pub = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
+        self.cmd_pub = self.create_publisher(
+		Twist, 
+		'/turtle1/cmd_vel', 
+		10
+	)
 
         # subscriber /turtle1/pose
         self.pose_sub = self.create_subscription(
-            Pose,
-            '/turtle1/pose',
-            self.pose_callback,
-            10
+        	Pose,
+            	'/turtle1/pose',
+            	self.pose_callback,
+            	10
         )
 
         # timer：
@@ -61,6 +81,23 @@ class TurtleGoToGoal(Node):
 
         # check if the goal was reached
         self.goal_reached = False
+       
+    def switch_to_next_waypoint(self):
+        
+        self.current_wp_index += 1
+
+        if self.current_wp_index >= len(self.waypoints):
+            self.current_wp_index = 0  
+
+        self.goal_x, self.goal_y = self.waypoints[self.current_wp_index]
+        self.goal_reached = False
+
+        self.get_logger().info(
+            f"Switch to waypoint #{self.current_wp_index}: "
+            f"({self.goal_x:.2f}, {self.goal_y:.2f})"
+        )
+        
+
 
     def pose_callback(self, msg: Pose):
         self.current_pose = msg
@@ -95,6 +132,7 @@ class TurtleGoToGoal(Node):
                 self.get_logger().info(
                     f"Goal reached! (x={x:.2f}, y={y:.2f}, dist={dist:.3f})"
                 )
+                self.switch_to_next_waypoint()
             return
 
         # calcualte target angle/error
