@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+        	# <comman name> = <python package name>.<file name>:<main name>
         	'turtle_square = my_turtle_controller.turtle_square:main',
         	'turtle_circle = my_turtle_controller.turtle_circle:main',
         	'turtle_circle_param = my_turtle_controller.turtle_circle_param:main',
@@ -33,7 +34,12 @@ setup(
         	'turtle_distance_monitor = my_turtle_controller.turtle_distance_monitor:main',
         	'turtle_zone_monitor = my_turtle_controller.turtle_zone_monitor:main',
         	'turtle_go_to_goal = my_turtle_controller.turtle_go_to_goal:main',
-        	
+        	'turtle_tf_broadcaster = my_turtle_controller.turtle_tf_broadcaster:main',
+        	'turtle_tf_broadcaster_goal = my_turtle_controller.turtle_tf_broadcaster_goal:main',
+		'turtle_tf_listener_go_to_goal = my_turtle_controller.turtle_tf_listener_go_to_goal:main',     
+		'turtle2_tf_broadcaster = my_turtle_controller.turtle2_tf_broadcaster:main',
+		'turtle2_tf_follow_turtle1 = my_turtle_controller.turtle2_tf_follow_turtle1:main',
+	
         ],
     },
 )
