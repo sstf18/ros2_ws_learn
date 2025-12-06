@@ -57,7 +57,7 @@ class Turtle2FollowTurtle1(Node):
 
             self.cmd_pub.publish(cmd)
 
-        except LookupException:
+        except TransformException:
             # TF not ready yet
             return
 
