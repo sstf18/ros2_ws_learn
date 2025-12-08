@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot name="minimal_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- outer paramters（changing through launch file） -->
+  <xacro:arg name="base_height" default="0.5"/>
+  <xacro:arg name="sensor_size" default="0.2"/>
+  
+  <!-- inner paramters -->
+  <xacro:property name="base_size" value="0.4"/>
+  <xacro:property name="base_height" value="$(arg base_height)"/>
+  <xacro:property name="sensor_size"  value="$(arg sensor_size)"/>
+  <xacro:property name="sensor_offset_z" value="${base_height/2 + sensor_size/2}"/>
+
+  <!-- base_link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${base_size} ${base_size} ${base_height}"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.1 0.4 0.8 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- sensor_link -->
+  <link name="sensor_link">
+    <visual>
+      <geometry>
+        <box size="${sensor_size} ${sensor_size} ${sensor_size}"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.8 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint：auto calculate the height of sensor -->
+  <joint name="base_to_sensor" type="continuous">
+    <parent link="base_link"/>
+    <child link="sensor_link"/>
+    <origin xyz="0.2 0 ${sensor_offset_z}" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+</robot>
+

@@ -23,17 +23,8 @@ def generate_launch_description():
         )
     )
     
-    # 3. teleop for controll whole system 
-    teleop = Node(
-        package='turtlesim',
-        executable='turtle_teleop_key',
-        name='teleop',
-        output='screen'
-    )
-
     return LaunchDescription([
         turtlesim_launch,
         tf_system_launch,
-        teleop, 
     ])
 

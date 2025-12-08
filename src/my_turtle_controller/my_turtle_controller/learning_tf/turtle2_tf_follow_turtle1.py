@@ -13,7 +13,7 @@ class Turtle2FollowTurtle1(Node):
         self.declare_parameter('linear_gain', 1.0)
         self.declare_parameter('angular_gain', 6.0)
 	
-        self.k_lin =    self.get_parameter('linear_gain').get_parameter_value().double_value
+        self.k_lin = self.get_parameter('linear_gain').get_parameter_value().double_value
         self.k_ang = self.get_parameter('angular_gain').get_parameter_value().double_value
 	
         # pubulish to turtle2 cmd_vel

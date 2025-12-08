@@ -12,7 +12,10 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        # install all launch/*.launch.py to share/<package>/launch/
         (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        # install all config/*.yaml to share/<package>/config/
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -28,20 +31,24 @@ setup(
     entry_points={
         'console_scripts': [
         	# <comman name> = <python package name>.<file name>:<main name>
-        	'turtle_square = my_turtle_controller.turtle_square:main',
-        	'turtle_circle = my_turtle_controller.turtle_circle:main',
-        	'turtle_circle_param = my_turtle_controller.turtle_circle_param:main',
-        	'turtle_circle_timer = my_turtle_controller.turtle_circle_timer:main',
-        	'turtle_keyboard_teleop = my_turtle_controller.turtle_keyboard_teleop:main',
-        	'turtle_pose_sub = my_turtle_controller.turtle_pose_sub:main',
-        	'turtle_distance_monitor = my_turtle_controller.turtle_distance_monitor:main',
-        	'turtle_zone_monitor = my_turtle_controller.turtle_zone_monitor:main',
-        	'turtle_go_to_goal = my_turtle_controller.turtle_go_to_goal:main',
-        	'turtle_tf_broadcaster = my_turtle_controller.turtle_tf_broadcaster:main',
-        	'turtle_tf_broadcaster_goal = my_turtle_controller.turtle_tf_broadcaster_goal:main',
-		'turtle_tf_listener_go_to_goal = my_turtle_controller.turtle_tf_listener_go_to_goal:main',     
-		'turtle2_tf_broadcaster = my_turtle_controller.turtle2_tf_broadcaster:main',
-		'turtle2_tf_follow_turtle1 = my_turtle_controller.turtle2_tf_follow_turtle1:main',
+        	
+        	# --- learning_basic ---
+        	'turtle_square = my_turtle_controller.learning_basic.turtle_square:main',
+        	'turtle_circle = my_turtle_controller.learning_basic.turtle_circle:main',
+        	'turtle_circle_param = my_turtle_controller.learning_basic.turtle_circle_param:main',
+        	'turtle_circle_timer = my_turtle_controller.learning_basic.turtle_circle_timer:main',
+        	'turtle_keyboard_teleop = my_turtle_controller.learning_basic.turtle_keyboard_teleop:main',
+        	'turtle_pose_sub = my_turtle_controller.learning_basic.turtle_pose_sub:main',
+        	'turtle_distance_monitor = my_turtle_controller.learning_basic.turtle_distance_monitor:main',
+        	'turtle_zone_monitor = my_turtle_controller.learning_basic.turtle_zone_monitor:main',
+        	'turtle_go_to_goal = my_turtle_controller.learning_basic.turtle_go_to_goal:main',
+        	
+        	# --- learning_tf ---
+        	'turtle_tf_broadcaster = my_turtle_controller.learning_tf.turtle_tf_broadcaster:main',
+        	'turtle_tf_broadcaster_goal = my_turtle_controller.learning_tf.turtle_tf_broadcaster_goal:main',
+		'turtle_tf_listener_go_to_goal = my_turtle_controller.learning_tf.turtle_tf_listener_go_to_goal:main',     
+		'turtle2_tf_broadcaster = my_turtle_controller.learning_tf.turtle2_tf_broadcaster:main',
+		'turtle2_tf_follow_turtle1 = my_turtle_controller.learning_tf.turtle2_tf_follow_turtle1:main',
 	
         ],
     },

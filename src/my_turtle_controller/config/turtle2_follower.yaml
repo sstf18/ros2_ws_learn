@@ -1,0 +1,4 @@
+turtle2_follower: 
+    ros__parameters: 
+        linear_gain: 3.3
+        angular_gain: 6.6
