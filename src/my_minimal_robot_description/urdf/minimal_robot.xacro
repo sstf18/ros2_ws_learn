@@ -39,7 +39,7 @@
   </link>
 
   <!-- Joint：auto calculate the height of sensor -->
-  <joint name="base_to_sensor" type="continuous">
+  <joint name="base_to_sensor" type="fixed">
     <parent link="base_link"/>
     <child link="sensor_link"/>
     <origin xyz="0.2 0 ${sensor_offset_z}" rpy="0 0 0"/>
