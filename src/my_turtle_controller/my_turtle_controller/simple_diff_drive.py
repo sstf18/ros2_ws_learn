@@ -103,7 +103,7 @@ class SimpleDiffDrive(Node):
         odom = Odometry()
         odom.header.stamp = stamp.to_msg()
         odom.header.frame_id = 'odom'
-        odom.child_frame_id = 'base_link'
+        odom.child_frame_id = 'base_footprint'
 
         # sets the position(x,y) of the robot in the odom frame
         odom.pose.pose.position.x = self.x
@@ -132,7 +132,7 @@ class SimpleDiffDrive(Node):
         t = TransformStamped()
         t.header.stamp = stamp.to_msg()
         t.header.frame_id = 'odom'
-        t.child_frame_id = 'base_link'
+        t.child_frame_id = 'base_footprint'
 
         t.transform.translation.x = self.x
         t.transform.translation.y = self.y
