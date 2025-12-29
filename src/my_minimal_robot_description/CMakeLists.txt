@@ -25,7 +25,13 @@ endif()
 
 # install urdf and launch 
 install(
-  DIRECTORY launch urdf
+  DIRECTORY launch urdf worlds
+  DESTINATION share/${PROJECT_NAME}
+)
+
+#install config 
+install(
+  DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 

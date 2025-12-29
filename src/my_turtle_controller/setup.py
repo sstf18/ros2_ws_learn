@@ -52,6 +52,7 @@ setup(
 		
 		'simple_diff_drive = my_turtle_controller.simple_diff_drive:main',
 		'diff_drive_circle = my_turtle_controller.diff_drive_circle:main',
+		'fake_scan_publisher = my_turtle_controller.fake_scan_publisher:main',
 	
         ],
     },
