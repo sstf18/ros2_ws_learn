@@ -28,10 +28,11 @@
         <plugin 
             filename="libignition-gazebo-joint-state-publisher-system.so"
             name="ignition::gazebo::systems::JointStatePublisher">
-            <!-- <topic>/joint_states</topic> -->
 
             <joint_name>base_left_wheel_joint</joint_name>
-            <joint_name>base_right_wheel_joint</joint_name>            
+            <joint_name>base_right_wheel_joint</joint_name> 
+            
+            <topic>/joint_states</topic>
         </plugin>
     </gazebo>
     
