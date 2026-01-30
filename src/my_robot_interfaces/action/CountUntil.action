@@ -1,9 +1,9 @@
-# Goal 
+# Goal: The target to count up to and the time delay between counts  
 int64 target_number 
 float64 period 
 ---
-# Result
+# Result: The final number reached when the action ends (succeeds or canceled)
 int64 reached_number
 ---
-# Feedback
+# Feedback: The current number while counting 
 int64 current_number
